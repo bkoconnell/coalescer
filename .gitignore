@@ -1,0 +1,9 @@
+__pycache__
+.pytest_cache
+.vscode
+settings.json
+launch.json
+000thisisatestdir999
+thisisatestfiletobewrittenanddeleted
+input_data.csv
+sample_output.csv

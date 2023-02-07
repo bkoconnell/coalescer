@@ -1,0 +1,10 @@
+__pycache__
+.pytest_cache
+.vscode
+settings.json
+launch.json
+000thisisatestdir999
+thisisatestfiletobewrittenanddeleted
+Dockerfile
+.dockerignore
+data
