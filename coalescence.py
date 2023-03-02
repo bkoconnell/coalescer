@@ -30,12 +30,6 @@ class Coalescer:
         common.check_arg_type(content, list, "datatable.setter -> arg must be of type 'list'")
         self.__data_table = content
 
-    # a valid sub will be type 'int' b/c the parser converted valid IPv4's to integers
-    def __is_valid_sub(self, sub: int) -> bool:
-        if not isinstance(sub, int):
-            return False
-        return True
-
 
     # Combine IP's if possible
     def __coalesce_ips(self, subs_list: list, init_idx=0, prior_submap=None):
