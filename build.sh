@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# install requirements.txt (for pytest)
+#pip3 install -r requirements.txt
+
 # run unit tests
 ./unit_test.py
 
