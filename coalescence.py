@@ -30,7 +30,13 @@ class Coalescer:
         common.check_arg_type(content, list, "datatable.setter -> arg must be of type 'list'")
         self.__data_table = content
 
+    # a valid sub will be type 'int' because the parser converted valid IPv4's to integers
+    def __is_valid_sub(self, sub) -> bool:
+        if isinstance(sub, int):
+            return True
+        return False
 
+    # ------------------------
     # Combine IP's if possible
     def __coalesce_ips(self, subs_list: list, init_idx=0, prior_submap=None):
         common.check_arg_type(subs_list, list, "Coalescer.__coalesce_ips() arg1 must be of type 'list'")
@@ -45,13 +51,13 @@ class Coalescer:
             # diff between sub1 and sub2 must equal 1 to be contiguous
             return max(sub1, sub2) - min(sub1, sub2) == 1
 
-        def __get_network_int(subnet, mask):
+        def __get_network_int(subnet, mask) -> int:
             common.check_arg_type(subnet, int, "get_network_int() arg1 must be of type 'int'")
             common.check_arg_type(mask, int, "get_network_int() arg2 must be of type 'int'")
             # bitwise AND of subnet & mask will return the network address (as an integer)
             return subnet & mask
 
-        def __calculate_supernet():
+        def __calculate_supernet() -> int:
             # use "2 to the N" to calculate supernet mask, where 'N' is the diff of (32 - cidr #)
             mask = sub_datamap['mask_int'] - (2 ** (32 - sub_datamap['cidr']))
             network = __get_network_int(sub_datamap['sub_int'], mask)
@@ -180,7 +186,7 @@ class Coalescer:
             subnets = sub_datamap['sub_str'] + sub_datamap['cidr_str'] + ';' + subnets
             return subnets
 
-
+    # --------------------------------------------
     # Format the parsed data & build the datatable
     def __format_datatable(self) -> list:
         self.datatable = list()
