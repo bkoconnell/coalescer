@@ -24,9 +24,9 @@ This project had several requirements from the "customer":
 
 __NOTE:__ A format spec was not provided to me. Instead, I was given the input CSV file and a sample output CSV file to validate that my program correctly formats the data per the sample; hence requirement (4)c.
 
-Unit tests were added as a bonus, which are run in the build script prior to creating the Docker image.
+Unit tests were added as a bonus, which are run in the build script prior to creating the App docker image.
 
-When you run the `build.sh` script it will run the unit tests, build the Docker image, run the Docker container with a mounted data volume, start the coalescer application, process the input data, and finally write/overwrite the `solution_output.csv` file. Check the diff between `solution_output.csv` and `sample_output.csv` (there should be no diff...).
+When you run the `build.sh` script it will build the Test image and execute the unit tests inside the container, then it will build the App image, run the App container with a mounted data volume, start the Coalescer app, process the input data, and finally write/overwrite the `solution_output.csv` file. Check the diff between `solution_output.csv` and `sample_output.csv` (there should be no diff...).
 
 Feel free to manually run `main.py` _(remember to pass the required args! ...see the Dockerfile's `CMD`)_ if you want to debug the code and review my parsing logic, data formatting & subnet coalescing logic, or any of the common functions which include customized exception handling, bit manipulation, binary math, IPv4/Mask/CIDR conversions, and so on...
 
