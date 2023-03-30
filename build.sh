@@ -1,9 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-# run unit tests
-./unit_test.py
+# build test image and run unit tests
+docker image build -t coalesce_unittests:v1.0 --target test .
+docker container run coalesce_unittests:v1.0
 
-# build image and run container with mounted volume
-docker image build -t coalesce:v1.0 .
+# build image for Coalescer app and run container with mounted volume
+docker image build -t coalesce:v1.0 --target app .
 docker container run -v "$(pwd)"/data:/app/data coalesce:v1.0
