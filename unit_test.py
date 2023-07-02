@@ -10,7 +10,7 @@ import common
 
 
 # Instantiate Main class
-m = main.Main(["data/input_data.csv", "data/solution_output_test.csv"])
+m = main.Main(["test_files/input_data.csv", "data/solution_output_test.csv"])
 
 
 # ---------------------------------------------

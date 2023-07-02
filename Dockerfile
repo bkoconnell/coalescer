@@ -26,4 +26,4 @@ ENV USER=${user}
 COPY --chown=${user} . .
 # Set default executable with command line args (input file & output file paths).
 ENTRYPOINT [ "./main.py" ]
-CMD [ "./data/input_data.csv", "./data/solution_output.csv" ]
+CMD [ "test_files/input_data.csv", "data/solution_output.csv" ]

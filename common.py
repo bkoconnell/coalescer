@@ -186,5 +186,5 @@ def convert_cidr_to_str(cidr: int) -> str:
         cidr = '/' + str(cidr)
     return cidr
 
-    
+
 # ---------------------------------------------
