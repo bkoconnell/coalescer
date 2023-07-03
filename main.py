@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import os
 import csv
 # local modules
 import dataparser
@@ -48,10 +49,14 @@ class FileWriter:
 
     # write the output file
     def write_file(self):
-        with open(self.outfile, 'w', newline='') as f:
-            print(f"...Writing output file to '{self.outfile}'")
-            filewriter = csv.writer(f)
-            filewriter.writerows(self.output_data)
+        try:
+            with open(self.outfile, 'w', newline='') as f:
+                print(f"...Writing output file to '{self.outfile}'")
+                filewriter = csv.writer(f)
+                filewriter.writerows(self.output_data)
+        except PermissionError:
+            print("Permission Denied: Try running the script as root or sudo.")
+            # TODO: try to change permissions
 
 
 # ---------------------------------------------
