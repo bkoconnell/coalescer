@@ -1,5 +1,5 @@
 # coalescer
-Make sure you have `Docker` installed. Then you can simply clone this repository and run `./build.sh`
+Make sure you have `Docker` installed. Then you can simply clone this repository and run the `./build.sh` script in your Linux terminal. This program does not have a Windows or Mac version.
 
 This project had several requirements from the "customer":
 
@@ -19,14 +19,21 @@ This project had several requirements from the "customer":
             
             b) format invalid data & coalesced data accordingly.
             
-            c) output solution (solution_output.csv) must be identical to the 'sample_output.csv' in the data directory.
+            c) the output solution (`solution_output.csv`) must be identical to the `sample_output.csv` which can be found in the `test_files` directory.
             
 
 __NOTE:__ A format spec was not provided to me. Instead, I was given the input CSV file and a sample output CSV file to validate that my program correctly formats the data per the sample; hence requirement (4)c.
 
 Unit tests were added as a bonus, which are run in the build script prior to creating the App docker image.
 
-When you run the `build.sh` script it will build the Test image and execute the unit tests inside the container, then it will build the App image, run the App container with a mounted data volume, start the Coalescer app, process the input data, and finally write/overwrite the `solution_output.csv` file. Check the diff between `solution_output.csv` and `sample_output.csv` (there should be no diff...).
+When you run the `build.sh` script it will build the Test image and execute the unit tests inside the container. Then it will:
+- build the App image
+- run the App container with a mounted data volume (*coalescer/output* directory for persistent data from container's *app/data* directory)
+- start the Coalescer app
+- process the input data
+- write/overwrite the `solution_output.csv` file.
+
+Check the diff between `output/solution_output.csv` and `test_files/sample_output.csv` (there should be no diff...).
 
 Feel free to manually run `main.py` _(remember to pass the required args! ...see the Dockerfile's `CMD`)_ if you want to debug the code and review my parsing logic, data formatting & subnet coalescing logic, or any of the common functions which include customized exception handling, bit manipulation, binary math, IPv4/Mask/CIDR conversions, and so on...
 

@@ -6,5 +6,6 @@ settings.json
 launch.json
 000thisisatestdir999
 thisisatestfiletobewrittenanddeleted
+output/empty
 Dockerfile
 .dockerignore
