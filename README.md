@@ -1,6 +1,10 @@
 # coalescer
 Make sure you have `Docker` installed. Then you can simply clone this repository and run the `./build.sh` script in your Linux terminal. This program does not have a Windows or Mac version.
 
+NOTE: This program has only been tested using Docker on Debian distros. Other container tools like Podman may experience issues, namely with 'Write' permissions for the output solution. Not all Linux distros have been tested, but Debian distros appear to work as intended.
+
+______________________________________________________________________________________
+
 This project had several requirements from the "customer":
 
     (1) Dockerfile must udpate packages, create a new user, and allow the app to be run by the new user.
