@@ -47,12 +47,14 @@ def make_dir_if_needed(dir_path):
     if not os.path.exists(dir_path):
         err = None
         try:
-            os.makedirs(dir_path)
+            os.makedirs(dir_path, 0o666)
             print(f"...Created empty directory '{dir_path}'")
         except FileNotFoundError:
             print(f"...Unable to create directory '{dir_path}'")
+    else:
+        print(f"'{dir_path}' already exists.")
     if not os.path.isdir(dir_path):
-        print(f"'...File {dir_path}' exists but is not a directory.")
+        print(f"...File '{dir_path}' exists but is not a directory.")
 
 # function to set a specific bit to '1'
 def set_bit(num: int, pos: int) -> int:
@@ -186,5 +188,5 @@ def convert_cidr_to_str(cidr: int) -> str:
         cidr = '/' + str(cidr)
     return cidr
 
-    
+
 # ---------------------------------------------
